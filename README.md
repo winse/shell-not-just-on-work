@@ -35,4 +35,8 @@ done
 * B-003 使用SparkSQL结合多种数据来源导出数据 - [extract-activeresource-domain.sh](extract-activeresource-domain.sh)
 * A-004 批量修改bond的模式
 * A-005 使用Puppet批量修改用户密码
-* A-006 XML转CSV
+* A-006 XML转CSV - [format.xslt](format.xslt)
+
+```
+xsltproc format.xslt hadoop-2.6.3/etc/hadoop/core-site.xml 
+```
