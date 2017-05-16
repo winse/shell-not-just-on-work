@@ -40,3 +40,9 @@ done
 ```
 xsltproc format.xslt hadoop-2.6.3/etc/hadoop/core-site.xml 
 ```
+
+* A-007 类似 kubectl exec 功能 - [pod_bash](pod_bash) 
+
+```
+pod_bash CONTAIN_NAME NAMESPACE
+```
