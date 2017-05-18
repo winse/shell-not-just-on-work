@@ -46,3 +46,5 @@ xsltproc format.xslt hadoop-2.6.3/etc/hadoop/core-site.xml
 ```
 pod_bash CONTAIN_NAME NAMESPACE
 ```
+
+* A-008 K8S下测试集群快速搭建 - [deploy-cluster-on-k8s.sh](deploy-cluster-on-k8s.sh) [simple-hadoop.yaml](simple-hadoop.yaml)
