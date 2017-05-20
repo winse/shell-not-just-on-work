@@ -48,3 +48,4 @@ pod_bash CONTAIN_NAME NAMESPACE
 ```
 
 * A-008 K8S下测试集群快速搭建 - [deploy-cluster-on-k8s.sh](deploy-cluster-on-k8s.sh) [simple-hadoop.yaml](simple-hadoop.yaml)
+* A-009 不重启Docker的情况下通过国内加速下载Docker镜像（for centos6） - [docker-download-mirror](docker-download-mirror)
