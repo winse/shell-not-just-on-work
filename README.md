@@ -50,3 +50,18 @@ pod_bash CONTAIN_NAME NAMESPACE
 * A-008 K8S下测试集群快速搭建 - [deploy-cluster-on-k8s.sh](deploy-cluster-on-k8s.sh) [simple-hadoop.yaml](simple-hadoop.yaml)
 * A-009 不重启Docker的情况下通过国内加速下载Docker镜像（for centos6） - [docker-download-mirror](docker-download-mirror)
 * A-010 突破堡垒机 - [堡垒机LogonScript.vbs](堡垒机LogonScript.vbs) 
+* A-011 Scala生产小测试(本地连接生产，层层阻隔，任意的调用java接口还是挺麻烦的，使用scala直接连接口还是挺方便的)
+
+```
+$ /data/bigdata/scala-2.11.8/bin/scala -cp '/home/hadoop/query-3.0/lib/common/*:/home/hadoop/query-3.0/lib/core/*' 
+: paste
+
+..
+
+CTRL+D
+
+: load file.scala(不能含package)
+
+// 然后根据你的业务写代码，就可以调用接口了
+
+```
