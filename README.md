@@ -13,8 +13,8 @@
 
 ```
 # 用for，不要用while
-HOSTS=`cat /etc/hosts | grep -v '^#' | grep slaver | grep -E '\.36\.|\.37\.' | awk '{print $2}' `
-for h in $HOSTS ; do 
+$ HOSTS=`cat /etc/hosts | grep -v '^#' | grep slaver | grep -E '\.36\.|\.37\.' | awk '{print $2}' `
+$ for h in $HOSTS ; do 
   ./ssh-copy-id.expect $h 'PASSWD';
 done
 ```
@@ -29,7 +29,7 @@ done
 #  3 安装puppet-agent、mcollective；
 #  4 修正hostname；
 #  5 配置启动mcollective。
-./new-datanode-init.sh hadoop-slaver{200..300}
+$ ./new-datanode-init.sh hadoop-slaver{200..300}
 ```
   
 * B-003 使用SparkSQL结合多种数据来源导出数据 - [extract-activeresource-domain.sh](extract-activeresource-domain.sh)
@@ -38,13 +38,13 @@ done
 * A-006 XML转CSV - [format.xslt](format.xslt)
 
 ```
-xsltproc format.xslt hadoop-2.6.3/etc/hadoop/core-site.xml 
+$ xsltproc format.xslt hadoop-2.6.3/etc/hadoop/core-site.xml 
 ```
 
 * A-007 类似 kubectl exec 功能 - [pod_bash](pod_bash) 
 
 ```
-pod_bash CONTAIN_NAME NAMESPACE
+$ pod_bash CONTAIN_NAME NAMESPACE
 ```
 
 * A-008 K8S下测试集群快速搭建 - [deploy-cluster-on-k8s.sh](deploy-cluster-on-k8s.sh) [simple-hadoop.yaml](simple-hadoop.yaml)
@@ -65,3 +65,5 @@ CTRL+D
 // 然后根据你的业务写代码，就可以调用接口了
 
 ```
+
+* A-012 
