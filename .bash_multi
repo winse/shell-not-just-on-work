@@ -1,0 +1,37 @@
+# multiprocess
+
+# 含义参考：http://www.jianshu.com/p/2d60e6513fdd
+
+WORK_DIR=${WORK_DIR:-$(cd `dirname $0`; pwd)}
+WORK_MULTI_THREADS=${WORK_MULTI_THREADS:-1}
+
+WORK_MULTI_FIFO=$WORK_DIR/$$.fifo
+
+function threadpool_start(){
+  if [ $WORK_MULTI_THREADS -le 1 ] ; then return 0; fi
+    
+  mkfifo $WORK_MULTI_FIFO
+  exec 6<>$WORK_MULTI_FIFO
+  for ((i=0;i<$WORK_MULTI_THREADS;i++)) ; do echo ; done >&6
+}
+
+function threadpool_require(){
+  if [ $WORK_MULTI_THREADS -le 1 ] ; then return 0; fi
+  
+  read -u6
+}
+
+function threadpool_release(){
+  if [ $WORK_MULTI_THREADS -le 1 ] ; then return 0; fi
+  
+  echo >&6
+}
+
+function threadpool_destory(){
+  if [ $WORK_MULTI_THREADS -le 1 ] ; then return 0; fi
+  
+  wait # wait direct children finished.
+  
+  exec 6>&-
+  [ -e $WORK_MULTI_FIFO ] && rm $WORK_MULTI_FIFO
+}
