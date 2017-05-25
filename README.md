@@ -66,4 +66,33 @@ CTRL+D
 
 ```
 
-* A-012 
+* A-012 Shell并发N执行 - [.bash_multi](.bash_multi) 有很多其他的工具可以控制并发N的执行：xargs, mco puppet, pssh
+
+```
+source .bash_multi
+
+WORK_MULTI_THREADS=1
+
+threadpool_start;
+
+# don't use while pipeline: [... | while read line ...]  !
+for line in `cat $WORK_LIST` ;  do
+  function handle(){
+  }
+  function doit(){
+    handle "$@" ; 
+    threadpool_release ;
+  }
+  
+  threadpool_require;
+  
+  if [ $WORK_MULTI_THREADS -le 1 ] ; then 
+    doit $line
+  else 
+    doit $line & 
+  fi
+done
+
+threadpool_destory;
+
+```
