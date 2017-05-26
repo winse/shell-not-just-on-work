@@ -96,3 +96,5 @@ done
 threadpool_destory;
 
 ```
+
+* B-002 定时根据情况修改数据库配置表 - [dynamic_access_conf.sh](dynamic_access_conf.sh)
