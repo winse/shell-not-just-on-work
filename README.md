@@ -98,3 +98,4 @@ threadpool_destory;
 ```
 
 * B-002 定时（结合crontab）根据情况修改分析数据库配置表 - [dynamic_access_conf.sh](dynamic_access_conf.sh)
+* A-013 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
