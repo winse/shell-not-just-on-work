@@ -101,3 +101,4 @@ threadpool_destory;
 * B-002 定时（结合crontab）根据情况修改分析数据库配置表 - [dynamic_access_conf.sh](dynamic_access_conf.sh)
 * D-001 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
 * D-002 快速打开Eclipse中选中的文件（夹）所在目录 - [explorer.launch](explorer.launch)
+* A-013 windows本地跑Zookeeper - [win-zkServers.bat](win-zkServers.bat)
