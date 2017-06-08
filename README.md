@@ -102,3 +102,9 @@ threadpool_destory;
 * D-001 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
 * D-002 快速打开Eclipse中选中的文件（夹）所在目录 - [explorer.launch](explorer.launch)
 * A-013 windows本地跑Zookeeper - [win-zkServers.bat](win-zkServers.bat)
+* A-014 shell实现数组乱序
+
+```
+cat ABC | shuf
+cat ABC | sort -R
+```
