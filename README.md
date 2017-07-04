@@ -138,3 +138,14 @@ cat ABC | sort -R
 1. 首先用SecureCRT连接到生产环境做个Socks5代理（RMI单纯本地端口转发是不行的）。
 2. 本地Java配置代理：`-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=5555`, 然后本地代码RMI的地址指定为生产对应服务的地址。
 
+* A-015 内容实现 A - B
+
+首先把A、B的内容保存到两个文件，然后使用diff来处理：
+
+```
+diff -u A B | grep '^-' | grep '\\lib' | sed 's/^-/-libraryjars /' 
+```
+
+做项目jar混淆处理时，injars和libraryjars不能重。挺方便的一种方式，尽管不是很严谨，初步筛选出来，再执行报错一个个的处理就好了。
+
+
