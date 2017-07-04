@@ -7,54 +7,75 @@
 * A 运维
 * B 业务
 * D 开发
+* :yum: 自我觉得不错
  
 ## 列表 
  
-* A-001 SSH批量无密钥登录Expect脚本 - [ssh-copy-id.expect](ssh-copy-id.expect)
+* :yum: A-001 SSH批量无密钥登录Expect脚本 - [ssh-copy-id.expect](ssh-copy-id.expect)
+
+搞几台测试的机器:
 
 ```
-# 用for，不要用while
-$ HOSTS=`cat /etc/hosts | grep -v '^#' | grep slaver | grep -E '\.36\.|\.37\.' | awk '{print $2}' `
+docker run -d cu.eshore.cn/library/java:jdk8 /usr/sbin/sshd -D
+docker run -d cu.eshore.cn/library/java:jdk8 /usr/sbin/sshd -D
+docker run -d cu.eshore.cn/library/java:jdk8 /usr/sbin/sshd -D
+```
+
+结合for使用:
+
+```
+$ HOSTS=` docker ps | head -4 | grep -v IMAGE | awk '{print $1}' | xargs -I{} docker exec {} ifconfig | grep '10.' | awk -F' |:' '{print $(NF-6)}' `
 $ for h in $HOSTS ; do 
-  ./ssh-copy-id.expect $h 'PASSWD';
+  ./ssh-copy-id.expect $h 'root';
 done
 ```
-  
-* A-002 新机器初始化配置脚本 - [new-datanode-init.sh](new-datanode-init.sh)
+
+结合while使用:
 
 ```
-# 首先修改新机器的密码和PUPPETSERVER的地址
-# 执行命令，脚本做了如下事情：
-#  1 SSH无密钥登录；
-#  2 拷贝yum repo；
-#  3 安装puppet-agent、mcollective；
-#  4 修正hostname；
-#  5 配置启动mcollective。
+$ docker ps | head -4 | grep -v IMAGE | awk '{print $1}' | xargs -I{} docker exec {} ifconfig | grep '10.' | awk -F' |:' '{print $(NF-6)}' | while read h ; do  
+  ./ssh-copy-id.expect $h 'root' </dev/null ; 
+done 
+```
+
+* A-002 新机器初始化配置脚本 - [new-datanode-init.sh](new-datanode-init.sh)
+
+首先新机器的密码PASSWD和Puppet服务器地址PUPPETSERVER两个环境变量；然后执行命令:
+
+```
 $ ./new-datanode-init.sh hadoop-slaver{200..300}
 ```
+
+脚本做了如下事情：
+
+  1. SSH无密钥登录；
+  2. 拷贝yum repo；
+  3. 安装puppet-agent、mcollective；
+  4. 修正hostname；
+  5. 配置启动mcollective。
   
 * B-003 使用SparkSQL结合多种数据来源导出数据 - [extract-activeresource-domain.sh](extract-activeresource-domain.sh)
 * A-004 批量修改bond的模式
-* A-005 使用Puppet批量修改用户密码
-* A-006 XML转CSV - [format.xslt](format.xslt)
+* :yum: A-005 [使用Puppet批量修改用户密码](http://www.winseliu.com/blog/2016/09/06/puppet-modify-password/)
+* :yum: A-006 XML转CSV - [format.xslt](format.xslt)
 
 ```
 $ xsltproc format.xslt hadoop-2.6.3/etc/hadoop/core-site.xml 
 ```
 
-* A-007 类似 kubectl exec 功能 - [pod_bash](pod_bash) 
+* A-007 类似 kubectl exec 的功能 - [pod_bash](pod_bash) 
 
 ```
 $ pod_bash CONTAIN_NAME NAMESPACE
 ```
 
-* A-008 K8S下测试集群快速搭建 - [deploy-cluster-on-k8s.sh](deploy-cluster-on-k8s.sh) [simple-hadoop.yaml](simple-hadoop.yaml)
-* A-009 不重启Docker的情况下通过国内加速下载Docker镜像（for centos6） - [docker-download-mirror](docker-download-mirror)
-* A-010 突破堡垒机 - [堡垒机LogonScript.vbs](堡垒机LogonScript.vbs) 
-* A-011 Scala生产小测试(本地连接生产，层层阻隔，任意的调用java接口还是挺麻烦的，使用scala直接连接口还是挺方便的)
+* A-008 K8S下测试环境集群快速搭建 - [deploy-cluster-on-k8s.sh](deploy-cluster-on-k8s.sh)  [simple-hadoop.yaml](simple-hadoop.yaml)
+* :yum: A-009 不重启Docker的情况下通过国内加速下载Docker镜像（for centos6） - [docker-download-mirror](docker-download-mirror)
+* :yum: A-010 突破堡垒机 - [堡垒机LogonScript.vbs](堡垒机LogonScript.vbs), 需要了解本地端口转发、远程端口转发。
+* A-011 Scala生产小测试(生产调用java接口还是挺麻烦的-- :boom: 可以做Sockt5代理，直接运行scala连接接口还是挺方便的)
 
 ```
-$ /data/bigdata/scala-2.11.8/bin/scala -cp '/home/hadoop/query-3.0/lib/common/*:/home/hadoop/query-3.0/lib/core/*' 
+$ scala -cp 'lib/common/*:lib/core/*' 
 : paste
 
 ..
@@ -63,7 +84,7 @@ CTRL+D
 
 : load file.scala(不能含package)
 
-// 然后根据你的业务写代码，就可以调用接口了
+// 然后根据你的业务写代码，就可以调用接口了。想怎么调用就怎么调用
 
 ```
 
@@ -99,12 +120,18 @@ threadpool_destory;
 ```
 
 * B-002 定时（结合crontab）根据情况修改分析数据库配置表 - [dynamic_access_conf.sh](dynamic_access_conf.sh)
-* D-001 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
+* :yum: D-001 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
 * D-002 快速打开Eclipse中选中的文件（夹）所在目录 - [explorer.launch](explorer.launch)
 * A-013 windows本地跑Zookeeper - [win-zkServers.bat](win-zkServers.bat)
-* A-014 shell实现数组乱序
+* :yum: A-014 shell实现数组乱序
 
 ```
 cat ABC | shuf
 cat ABC | sort -R
 ```
+
+* D-003 RMI远程调试
+
+1. 首先用SecureCRT做个Socks5代理（RMI端口转发是不行的），连接到生产环境的RMI应用的端口。
+2. 本地Java配置代理：`-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=5555`, 然后RMI的地址指定为生产对应服务的地址。
+
