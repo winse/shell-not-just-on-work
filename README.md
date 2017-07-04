@@ -90,6 +90,8 @@ CTRL+D
 
 * A-012 Shell并发N执行 - [.bash_multi](.bash_multi) 有很多其他的工具可以控制并发N的执行：xargs, mco puppet, pssh
 
+举个例子：
+
 ```
 source .bash_multi
 
@@ -100,6 +102,7 @@ threadpool_start;
 # don't use while pipeline: [... | while read line ...]  !
 for line in `cat $WORK_LIST` ;  do
   function handle(){
+    # change it...
   }
   function doit(){
     handle "$@" ; 
@@ -132,6 +135,6 @@ cat ABC | sort -R
 
 * D-003 RMI远程调试
 
-1. 首先用SecureCRT做个Socks5代理（RMI端口转发是不行的），连接到生产环境的RMI应用的端口。
-2. 本地Java配置代理：`-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=5555`, 然后RMI的地址指定为生产对应服务的地址。
+1. 首先用SecureCRT连接到生产环境做个Socks5代理（RMI单纯本地端口转发是不行的）。
+2. 本地Java配置代理：`-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=5555`, 然后本地代码RMI的地址指定为生产对应服务的地址。
 
