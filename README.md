@@ -76,17 +76,9 @@ $ pod_bash CONTAIN_NAME NAMESPACE
 
 ```
 $ scala -cp 'lib/common/*:lib/core/*' 
-: paste
-
-..
-
-CTRL+D
-
-: load file.scala(不能含package)
-
-// 然后根据你的业务写代码，就可以调用接口了。想怎么调用就怎么调用
-
 ```
+
+然后结合 ` : paste ` 和 ` CTRL+D ` 以及 ` : load file.scala(不能含package) ` 进行块操作。 根据你的业务写代码，就可以调用接口了。想怎么调用就怎么调用。
 
 * A-012 Shell并发N执行 - [.bash_multi](.bash_multi) 有很多其他的工具可以控制并发N的执行：xargs, mco puppet, pssh
 
@@ -94,32 +86,26 @@ CTRL+D
 
 ```
 source .bash_multi
-
 WORK_MULTI_THREADS=1
+threadpool_start; // 初始化N线程
 
-threadpool_start;
-
-# don't use while pipeline: [... | while read line ...]  !
 for line in `cat $WORK_LIST` ;  do
-  function handle(){
-    # change it...
-  }
-  function doit(){
-    handle "$@" ; 
-    threadpool_release ;
-  }
+  function handle(){ change it }
+  function doit(){ 
+    handle "$@" ;  
+    threadpool_release ; // 释放
+  }
   
-  threadpool_require;
-  
-  if [ $WORK_MULTI_THREADS -le 1 ] ; then 
+  threadpool_require; // 获取一个线程
+  
+  if [ $WORK_MULTI_THREADS -le 1 ] ; then 
     doit $line
   else 
     doit $line & 
   fi
 done
 
-threadpool_destory;
-
+threadpool_destory; // 结束，清理
 ```
 
 * B-002 定时（结合crontab）根据情况修改分析数据库配置表 - [dynamic_access_conf.sh](dynamic_access_conf.sh)
@@ -147,5 +133,42 @@ diff -u A B | grep '^-' | grep '\\lib' | sed 's/^-/-libraryjars /'
 ```
 
 做项目jar混淆处理时，injars和libraryjars不能重。挺方便的一种方式，尽管不是很严谨，初步筛选出来，再执行报错一个个的处理就好了。
+
+* A-016 使用SSH Multiplexing加速SSH
+
+启用SSH Multiplexing：
+
+```
+$ vi .ssh/config
+Host *
+    ControlMaster auto
+    ControlPath /tmp/%r@%h:%p
+    ControlPersist 10m
+
+```
+
+效果：
+
+```
+[hadoop@hadoop-master1 ~]$ time ssh hadoop-master2 hostname
+hadoop-master2
+
+real    0m0.176s
+user    0m0.022s
+sys     0m0.005s
+[hadoop@hadoop-master1 ~]$ time ssh hadoop-master2 hostname
+hadoop-master2
+
+real    0m0.030s
+user    0m0.002s
+sys     0m0.004s
+[hadoop@hadoop-master1 ~]$ ssh -O check hadoop-master2
+Master running (pid=26923)
+[hadoop@hadoop-master1 ~]$ ps 26923
+  PID TTY      STAT   TIME COMMAND
+26923 ?        SNs    0:00 ssh: /tmp/hadoop@hadoop-master2:22 [mux]
+[hadoop@hadoop-master1 ~]$ ssh -O exit hadoop-master2
+```
+
 
 
