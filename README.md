@@ -134,7 +134,7 @@ diff -u A B | grep '^-' | grep '\\lib' | sed 's/^-/-libraryjars /'
 
 做项目jar混淆处理时，injars和libraryjars不能重。挺方便的一种方式，尽管不是很严谨，初步筛选出来，再执行报错一个个的处理就好了。
 
-* A-016 使用SSH Multiplexing加速SSH
+* :yum: A-016 使用SSH Multiplexing加速SSH
 
 启用SSH Multiplexing：
 
@@ -170,5 +170,6 @@ Master running (pid=26923)
 [hadoop@hadoop-master1 ~]$ ssh -O exit hadoop-master2
 ```
 
-
+* A-017 Shell数值运算
+* A-018 Test常见用法
 
