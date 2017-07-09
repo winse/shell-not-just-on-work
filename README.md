@@ -11,7 +11,7 @@
  
 ## 列表 
  
-#### :yum: A-001 SSH批量无密钥登录Expect脚本 - [ssh-copy-id.expect](ssh-copy-id.expect)
+#### A-001 :yum: SSH批量无密钥登录Expect脚本 - [ssh-copy-id.expect](ssh-copy-id.expect)
 
 搞几台测试的机器:
 
