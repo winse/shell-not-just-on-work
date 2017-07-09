@@ -56,8 +56,8 @@ $ ./new-datanode-init.sh hadoop-slaver{200..300}
   
 #### B-003 使用SparkSQL结合多种数据来源导出数据 - [extract-activeresource-domain.sh](extract-activeresource-domain.sh)
 #### A-004 批量修改bond的模式
-#### :yum: A-005 [使用Puppet批量修改用户密码](http://www.winseliu.com/blog/2016/09/06/puppet-modify-password/)
-#### :yum: A-006 XML转CSV - [format.xslt](format.xslt)
+#### A-005 :yum: [使用Puppet批量修改用户密码](http://www.winseliu.com/blog/2016/09/06/puppet-modify-password/)
+#### A-006 :yum: XML转CSV - [format.xslt](format.xslt)
 
 ```
 $ xsltproc format.xslt hadoop-2.6.3/etc/hadoop/core-site.xml 
@@ -70,8 +70,8 @@ $ pod_bash CONTAIN_NAME NAMESPACE
 ```
 
 #### A-008 K8S下测试环境集群快速搭建 - [deploy-cluster-on-k8s.sh](deploy-cluster-on-k8s.sh)  [simple-hadoop.yaml](simple-hadoop.yaml)
-#### :yum: A-009 不重启Docker的情况下通过国内加速下载Docker镜像（for centos6） - [docker-download-mirror](docker-download-mirror)
-#### :yum: A-010 突破堡垒机 - [堡垒机LogonScript.vbs](堡垒机LogonScript.vbs), 需要了解本地端口转发、远程端口转发。
+#### A-009 :yum: 不重启Docker的情况下通过国内加速下载Docker镜像（for centos6） - [docker-download-mirror](docker-download-mirror)
+#### A-010 :yum: 突破堡垒机 - [堡垒机LogonScript.vbs](堡垒机LogonScript.vbs), 需要了解本地端口转发、远程端口转发。
 #### A-011 Scala生产小测试(生产调用java接口还是挺麻烦的-- :boom: 可以做Sockt5代理，直接运行scala连接接口还是挺方便的)
 
 ```
@@ -109,10 +109,10 @@ threadpool_destory; // 结束，清理
 ```
 
 #### B-002 定时（结合crontab）根据情况修改分析数据库配置表 - [dynamic_access_conf.sh](dynamic_access_conf.sh)
-#### :yum: D-001 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
+#### D-001 :yum: 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
 #### D-002 快速打开Eclipse中选中的文件（夹）所在目录 - [explorer.launch](explorer.launch)
 #### A-013 windows本地跑Zookeeper - [win-zkServers.bat](win-zkServers.bat)
-#### :yum: A-014 shell实现数组乱序
+#### A-014 :yum: shell实现数组乱序
 
 ```
 cat ABC | shuf
@@ -134,7 +134,7 @@ diff -u A B | grep '^-' | grep '\\lib' | sed 's/^-/-libraryjars /'
 
 做项目jar混淆处理时，injars和libraryjars不能重。挺方便的一种方式，尽管不是很严谨，初步筛选出来，再执行报错一个个的处理就好了。
 
-#### :yum: A-016 使用SSH Multiplexing加速SSH
+#### A-016 :yum: 使用SSH Multiplexing加速SSH
 
 启用SSH Multiplexing：
 
