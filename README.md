@@ -172,4 +172,12 @@ Master running (pid=26923)
 
 * A-017 Shell数值运算
 * A-018 Test常见用法
+* A-019 优化git-log输出
 
+```
+$ git log --pretty='format:%h %ar%x09%s' -4
+357ce9d 2 weeks ago     format code
+d58845d 2 weeks ago     fix wrong email
+5ba6be9 2 weeks ago     instance alert config dao
+db3ad71 2 weeks ago     fix wrong log
+```
