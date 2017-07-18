@@ -181,3 +181,7 @@ d58845d 2 weeks ago     fix wrong email
 5ba6be9 2 weeks ago     instance alert config dao
 db3ad71 2 weeks ago     fix wrong log
 ```
+
+#### D-004 Maven脚手架生成加速
+
+mvn archetype:generate命令时，加上-DarchetypeCatalog=local
