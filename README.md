@@ -185,3 +185,20 @@ db3ad71 2 weeks ago     fix wrong log
 #### D-004 Maven脚手架生成加速
 
 mvn archetype:generate命令时，加上-DarchetypeCatalog=local
+
+#### A-020 下载远程服务器上的GIT项目
+
+```
+# 设置SOCKS5代理
+$ cat ~/.ssh/config
+Host hadoop-*
+  User hadoop
+  ProxyCommand nc -v -x 127.0.0.1:5555 %h %p
+
+# 无密钥登录
+$ chmod 600 ~/.ssh/config
+$ ssh-copy-id hadoop@hadoop-slaver388
+
+# CLONE
+$ git clone hadoop@hadoop-slaver388:~/playbook
+```
