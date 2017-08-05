@@ -202,3 +202,15 @@ $ ssh-copy-id hadoop@hadoop-slaver388
 # CLONE
 $ git clone hadoop@hadoop-slaver388:~/playbook
 ```
+
+#### A-021 tomcat远程调试
+
+修改startup.sh的最后一行(JDPA的环境变量用默认的也行)启动，然后本地启动eclipse/idea启动远程调试连接对应的服务器端口就行了：
+
+```
+set JPDA_TRANSPORT=dt_socket
+set JPDA_ADDRESS=8000
+set JPDA_SUSPEND=y
+
+call "%EXECUTABLE%" jpda start %CMD_LINE_ARGS%
+```
