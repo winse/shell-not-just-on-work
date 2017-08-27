@@ -214,3 +214,13 @@ set JPDA_SUSPEND=y
 
 call "%EXECUTABLE%" jpda start %CMD_LINE_ARGS%
 ```
+
+#### A-022 SSH端口转发
+
+```
+ssh -L
+ssh -D
+ssh -R
+
+supervisor + autossh
+```
