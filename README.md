@@ -224,3 +224,11 @@ ssh -R
 
 supervisor + autossh
 ```
+
+#### A-023 格式化/处理JSON
+
+```
+curl xxxx|python -m json.tool
+
+curl xxxx|jq .
+```
