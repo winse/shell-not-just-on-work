@@ -239,3 +239,15 @@ curl xxxx|jq .
 split -b 512m nexus-0906.tar.gz nexus-0906-split 
 ```
 
+#### A-025 Less跳到第N行
+
+If the file is open you can type:
+
+	* 100g to go to the 100th line.
+	* 50p to go to 50% into the file.
+	* 100P to go to the line containing 100th byte.
+
+You can use these from terminal by adding + in front of them: less +100g bigfile.txt
+
+you can type $ to go to the last line
+
