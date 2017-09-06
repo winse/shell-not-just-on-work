@@ -232,3 +232,10 @@ curl xxxx|python -m json.tool
 
 curl xxxx|jq .
 ```
+
+#### A-024 大文件拆分
+
+```
+split -b 512m nexus-0906.tar.gz nexus-0906-split 
+```
+
