@@ -251,3 +251,12 @@ You can use these from terminal by adding + in front of them: less +100g bigfile
 
 you can type $ to go to the last line
 
+#### D-005 抓取数据的一些片段
+
+* https://github.com/winse/spark-best-practice/blob/master/sparksql/crawler.js
+* https://github.com/winse/exportblog-node/blob/master/blog.js
+
+#### D-0006 scala启动程序
+
+* https://github.com/winse/spark-examples/blob/master/src/main/scala/com/github/winse/spark/HelloMetrics.scala
+
