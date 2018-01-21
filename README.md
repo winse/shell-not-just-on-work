@@ -260,3 +260,20 @@ you can type $ to go to the last line
 
 * https://github.com/winse/spark-examples/blob/master/src/main/scala/com/github/winse/spark/HelloMetrics.scala
 
+#### A-026 Windows-Ubuntu explorer
+
+```
+#!/bin/sh
+
+WHERE=$( readlink -f $PWD | sed -e 's#/mnt/\([a-zA-Z0-9]*\)#\1:#' -e 's#/#\\#g' )
+
+explorer.exe "$WHERE"
+
+```
+
+then on the shell windows, execute command explorer.
+
+```
+winse@DESKTOP-ADH7K1Q:~/git/pinpoint$ explorer
+```
+
