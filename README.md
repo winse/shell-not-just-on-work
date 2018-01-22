@@ -277,3 +277,9 @@ then on the shell windows, execute command explorer.
 winse@DESKTOP-ADH7K1Q:~/git/pinpoint$ explorer
 ```
 
+#### A-027 虚拟机磁盘整理
+
+设置 - 硬盘 - (右边的选项)磁盘整理|压缩
+
+
+
