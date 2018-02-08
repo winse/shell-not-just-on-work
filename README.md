@@ -281,5 +281,9 @@ winse@DESKTOP-ADH7K1Q:~/git/pinpoint$ explorer
 
 设置 - 硬盘 - (右边的选项)磁盘整理|压缩
 
+#### A-028 Eclipse标识的部分代码不格式化
 
+ Java > Code Style > Formatter > Edit > Off/On Tags
+ 
+ 
 
