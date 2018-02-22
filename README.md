@@ -285,5 +285,20 @@ winse@DESKTOP-ADH7K1Q:~/git/pinpoint$ explorer
 
  Java > Code Style > Formatter > Edit > Off/On Tags
  
- 
+#### A-029 视频转换
+
+mkv to mp4
+
+```
+PS E:\迅雷下载> E:\local\usr\share64\ffmpeg-20180215-8a8d0b3-win64-static\bin\ffmpeg.exe -i '.\大闹天宫(修复版).DVD高清国语中字.mkv' -c copy dltg.mp4
+
+for f in *.mkv; do ffmpeg -i "$f" -c copy "${f%.mkv}.mp4"; done
+for /R %%f IN (*.mkv) DO ffmpeg -i "%%f" -c copy "%%~nf.mp4"
+
+```
+
+
+
+
+
 
