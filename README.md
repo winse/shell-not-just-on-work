@@ -297,7 +297,11 @@ for /R %%f IN (*.mkv) DO ffmpeg -i "%%f" -c copy "%%~nf.mp4"
 
 ```
 
+#### D-004 调试的时刻不修改代码输出信息
 
+通过条件断点增加输出：`System.out.println(cursor);false`
+
+![image](https://user-images.githubusercontent.com/667902/36820578-8040c4ea-1d29-11e8-9540-65527b7a9437.png)
 
 
 
