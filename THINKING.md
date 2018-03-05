@@ -11,3 +11,9 @@
 
 ![](https://user-images.githubusercontent.com/667902/36820578-8040c4ea-1d29-11e8-9540-65527b7a9437.png)
 
+#### Eclipse标识的部分代码不格式化
+
+```
+Java > Code Style > Formatter > Edit > Off/On Tags
+```
+
