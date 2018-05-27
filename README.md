@@ -303,6 +303,21 @@ for /R %%f IN (*.mkv) DO ffmpeg -i "%%f" -c copy "%%~nf.mp4"
 
 ![image](https://user-images.githubusercontent.com/667902/36820578-8040c4ea-1d29-11e8-9540-65527b7a9437.png)
 
+#### D-005 仅检出git仓库子目录
 
+```
+repo="https://github.com/winse/helloworld.git"
+branch=hello
+subfolder=HelloScalaMapReduce
 
+mkdir $subfolder
+cd $subfolder
+git init
+git remote add -f origin $repo
+git config core.sparsecheckout true
+: 指定需要检出的子目录/文件
+echo HelloScalaMapReduce > .git/info/sparse-checkout
+git pull origin $branch
+
+```
 
