@@ -321,3 +321,13 @@ git pull origin $branch
 
 ```
 
+#### A-030 [scp如何跨过中转主机直接传输文件？](https://www.zhihu.com/question/38216180)
+
+```
+scp -o ProxyCommand='ssh -q root@jump -W %h:%p' -r bigendian@search1:~/search/lib ~/search/
+
+rsync -a -e 'ssh -A A ssh -A B' /tmp/a/ C:/tmp/b/
+
+scp -o ProxyCommand="ssh $jump_host nc $host 22" $local_path host:$destination_path
+
+```
