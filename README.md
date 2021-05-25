@@ -333,3 +333,23 @@ rsync -a -e 'ssh -A A ssh -A B' /tmp/a/ C:/tmp/b/
 scp -o ProxyCommand="ssh $jump_host nc $host 22" $local_path host:$destination_path
 
 ```
+
+#### A-031 程序启动后再切到后台
+
+##### simple
+
+* To start a command in background, do `command &` or `nohup command &` (if you want to log out and still have it running)
+* To stop the running command, C-z (ctrl-Z), to put the stopped command in background do `bg`. With `fg` you bring it back into the foreground, `jobs` tells you what is stopped or in background. `kill %k` kills job number k, `fg %k` (or plain %k) brings it to the foreground. You can start stopped job k in the background by `bg %k` (or simply %k &).
+
+##### boot
+
+* Option 1: nohup
+The best way is often the simplest. `nohup long-running-command &` It was made specifically for this, it even logs stdout to nohup.log.
+* Option 2: bg + disown
+```
+ctrl+z
+bg
+disown -h
+```
+
+
