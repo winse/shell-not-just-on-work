@@ -136,6 +136,8 @@ diff -u A B | grep '^-' | grep '\\lib' | sed 's/^-/-libraryjars /'
 
 #### A-016 :yum: 使用SSH Multiplexing加速SSH
 
+NOTE: 加上ControlPersist后，可以用来实现脚本远程ssh连接只输入一次密码的效果！
+
 启用SSH Multiplexing：
 
 ```
