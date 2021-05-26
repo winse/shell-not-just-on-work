@@ -109,8 +109,8 @@ threadpool_destory; // 结束，清理
 ```
 
 #### B-002 定时（结合crontab）根据情况修改分析数据库配置表 - [dynamic_access_conf.sh](dynamic_access_conf.sh)
-#### D-001 :yum: 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
-#### D-002 快速打开Eclipse中选中的文件（夹）所在目录 - [explorer.launch](explorer.launch)
+#### @deprecated D-001 :yum: 本地Cygwin命令打开当前路径 - [cygexplorer](cygexplorer)
+#### @deprecated D-002 快速打开Eclipse中选中的文件（夹）所在目录 - [explorer.launch](explorer.launch)
 #### A-013 windows本地跑Zookeeper - [win-zkServers.bat](win-zkServers.bat)
 #### A-014 :yum: shell实现数组乱序
 
@@ -136,7 +136,7 @@ diff -u A B | grep '^-' | grep '\\lib' | sed 's/^-/-libraryjars /'
 
 #### A-016 :yum: 使用SSH Multiplexing加速SSH
 
-NOTE: 加上ControlPersist后，可以用来实现脚本远程ssh连接只输入一次密码的效果！
+* NOTE: 加上ControlPersist后，可以用来实现脚本远程ssh连接只输入一次密码的效果！
 
 启用SSH Multiplexing：
 
@@ -292,7 +292,7 @@ winse@DESKTOP-ADH7K1Q:~/git/pinpoint$ explorer
 mkv to mp4
 
 ```
-PS E:\迅雷下载> E:\local\usr\share64\ffmpeg-20180215-8a8d0b3-win64-static\bin\ffmpeg.exe -i '.\大闹天宫(修复版).DVD高清国语中字.mkv' -c copy dltg.mp4
+PS E:\迅雷下载> E:\local\ffmpeg\bin\ffmpeg.exe -i '.\大闹天宫(修复版).DVD高清国语中字.mkv' -c copy dltg.mp4
 
 for f in *.mkv; do ffmpeg -i "$f" -c copy "${f%.mkv}.mp4"; done
 for /R %%f IN (*.mkv) DO ffmpeg -i "%%f" -c copy "%%~nf.mp4"
