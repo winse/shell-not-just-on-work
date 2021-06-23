@@ -9,7 +9,7 @@ dir
 @REM for /f %%f in ('dir /b .') do (
 for %%f in (*) do (
 echo %%f
-E:\local\bin\saveToPDF.js "%%f"
+E:\local\bin\saveToPdf.js "%%f"
 )
 
 pause
